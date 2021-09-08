@@ -117,4 +117,9 @@ The assignment deliverable consists of a Github repository containing:
 
 
 # Design
-[ Your work goes here ]
+## FIRST STEP:
+I run the initiator script which assigned me 3 different values that represents the number of hosts that my subnets have to support:
+- 258 for Host-a
+- 262 for Host-b
+- 143 for Host-c
+
