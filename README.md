@@ -117,9 +117,11 @@ The assignment deliverable consists of a Github repository containing:
 
 
 # DESIGN
-## First step:
-I run the initiator script which assigned me 3 different values that represents the number of hosts that my subnets have to support:
+## First step
+I run the initiator script which assigned me three different values that represents the number of hosts that my subnets have to support:
 - 258 for Host-a
 - 262 for Host-b
 - 143 for Host-c
-
+## Creating subnets
+Then I created four different subnets.
+- The first is between the two routers, router-1 and router-2
