@@ -125,6 +125,6 @@ I run the initiator script which assigned me three different values that represe
 ## Creating subnets
 Then I created four different subnets.
 - The first is between the two routers, router-1 and router-2
-- The second
-- The third
-- The fourth
+- The second is between router-1 and host-a
+- The third is between router-1 and host-b
+- The fourth is between router-2 and host-c
