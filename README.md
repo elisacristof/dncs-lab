@@ -116,8 +116,8 @@ The assignment deliverable consists of a Github repository containing:
 - https://www.vagrantup.com/intro/getting-started/
 
 
-# Design
-## FIRST STEP:
+# DESIGN
+## First step:
 I run the initiator script which assigned me 3 different values that represents the number of hosts that my subnets have to support:
 - 258 for Host-a
 - 262 for Host-b
