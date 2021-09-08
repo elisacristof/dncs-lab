@@ -7,12 +7,12 @@ Subnets:
   HostsA:
     RequiredAddresses: 258
     SubnetAddress: YourHostsASubnetAddress
-    SubnetPrefixLength: YourHostsASubnetPrefixLength
+    SubnetPrefixLength: 23
   HostsB:
     RequiredAddresses: 262
     SubnetAddress: YourHostsBSubnetAddress
-    SubnetPrefixLength: YourHostsBSubnetPrefixLength
+    SubnetPrefixLength: 23
   Hub:
     RequiredAddresses: 143
     SubnetAddress: YourHubSubnetAddress
-    SubnetPrefixLength: YourHubSubnetPrefixLength
+    SubnetPrefixLength: 24
