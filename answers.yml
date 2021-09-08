@@ -1,0 +1,18 @@
+FirstName: Elisa
+LastName: Cristoforetti
+MatriculationNumber: 202219
+AcademicYear: 2019-2020
+GitHubUrl: YourGithubRepositoryURL
+Subnets:
+  HostsA:
+    RequiredAddresses: 258
+    SubnetAddress: YourHostsASubnetAddress
+    SubnetPrefixLength: YourHostsASubnetPrefixLength
+  HostsB:
+    RequiredAddresses: 262
+    SubnetAddress: YourHostsBSubnetAddress
+    SubnetPrefixLength: YourHostsBSubnetPrefixLength
+  Hub:
+    RequiredAddresses: 143
+    SubnetAddress: YourHubSubnetAddress
+    SubnetPrefixLength: YourHubSubnetPrefixLength
