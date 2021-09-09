@@ -2,17 +2,17 @@ FirstName: Elisa
 LastName: Cristoforetti
 MatriculationNumber: 202219
 AcademicYear: 2019-2020
-GitHubUrl: YourGithubRepositoryURL
+GitHubUrl: https://github.com/elisacristof/dncs-lab
 Subnets:
   HostsA:
     RequiredAddresses: 258
-    SubnetAddress: YourHostsASubnetAddress
+    SubnetAddress: 192.168.0.0
     SubnetPrefixLength: 23
   HostsB:
     RequiredAddresses: 262
-    SubnetAddress: YourHostsBSubnetAddress
+    SubnetAddress: 192.168.8.0
     SubnetPrefixLength: 23
   Hub:
     RequiredAddresses: 143
-    SubnetAddress: YourHubSubnetAddress
+    SubnetAddress: 192.168.3.0
     SubnetPrefixLength: 24
