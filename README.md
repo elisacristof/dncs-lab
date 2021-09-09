@@ -124,7 +124,7 @@ I run the initiator script which assigned me three different values that represe
 - 143 for Host-C
 ## Creating subnets
 Then I created four different subnets.
-- The first is between the two routers, *router-1* and *router-2*; for this I chose the subnet 10.1.0.0/30 because it cover only the two routers (2"<sup>32-30</sup>" - 2 = 2).
-- The second is between router-1 and host-a;   
-- The third is between router-1 and host-b;  
-- The fourth is between router-2 and host-c; in this case I used the subnet 192.168.3.0/24 because it has to cover 143 addresses (2"<sup>32-24</sup>" - 2 > 143) 
+- The first is between the two routers, *router-1* and *router-2*; for this I chose the subnet 10.1.0.0/30 because it cover only the two routers (2<sup>32-30</sup> - 2 = 2)
+- The second is between *router-1* and *host-a*; in this case I had to cover 258 addresses so I needed /23 as netmask (2<sup>32-24</sup> - 2 = 254 is not enough, instead 2<sup>32-23</sup> -2 = 510 is right). I used the subnet 192.168.0.0/23    
+- The third is between *router-1* and *host-b*, for which I chose to use the subnet 192.168.8.0/23    
+- The fourth is between *router-2* and *host-c*; in this case I used the subnet 192.168.3.0/24 because it has to cover 143 addresses (2<sup>32-24</sup> - 2 > 143) 
