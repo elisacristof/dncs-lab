@@ -128,3 +128,21 @@ Then I created four different subnets.
 - The second is between *router-1* and *host-a*; in this case I had to cover 258 addresses so I needed /23 as netmask (2<sup>32-24</sup> - 2 = 254 is not enough, instead 2<sup>32-23</sup> -2 = 510 is right). I used the subnet 192.168.0.0/23    
 - The third is between *router-1* and *host-b*, for which I chose to use the subnet 192.168.8.0/23    
 - The fourth is between *router-2* and *host-c*; in this case I used the subnet 192.168.3.0/24 because it has to cover 143 addresses (2<sup>32-24</sup> - 2 > 143) 
+## IP-Map
+*here goes the network configuration image*
+
+| Device | Interface | IP | Subnet |
+| :----: | :----: | :----: | :----: |
+| Router-1 |   | 10.1.0.1 | 1 |
+| Router-2 |   | 10.1.0.2 | 1 |
+| Router-1 |   | 192.168.0.1 | 2 |
+| Host-a |   | 192.168.0.2 | 2 |
+| Router-1 |   | 192.168.8.1 | 3 |
+| Host-b |   | 192.168.8.2 | 3 |
+| Router-2 |   | 192.168.3.1 | 4 |
+| Host-c |   | 192.168.3.2 | 4 |
+
+## Configuring Vagrant
+
+
+## Commands and Implementation
