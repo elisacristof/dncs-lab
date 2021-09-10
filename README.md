@@ -142,10 +142,18 @@ Then I created four different subnets.
 | Router-2 | enp0s8 | 192.168.3.1 | 4 |
 | Host-c | enp0s8 | 192.168.3.2 | 4 |
 
+I created two VLANs for subnets 2 and 3, respectively with tags 20 and 30. 
+
 ## Implementation
 ### Commands
 
 ### Configuring switch
+Regarding the switch, it was important and necessary to build the VLANs in order to keep Host-a and Host-b in separate subnets. First I created a bridge named *switch* with the command 'ovs-vsctl add-br switch'. Then I configured the ports with the following commands: 
+```
+sudo ovs-vsctl add-port switch enp0s8
+sudo ovs-vsctl add-port switch enp0s9 tag="20"
+sudo ovs-vsctl add-port switch enp0s10 tag="30"
+```
 
 ### Configuring Host-c
 
