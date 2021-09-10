@@ -119,12 +119,47 @@ The assignment deliverable consists of a Github repository containing:
 # DESIGN
 ## First step
 I run the initiator script which assigned me three different values that represents the number of hosts that my subnets have to support:
-- 258 for Host-A
-- 262 for Host-B
-- 143 for Host-C
+- 258 for subnet *Hosts-A*;
+- 262 for subnet *Hosts-B*;
+- 143 for subnet *Hub*.
 ## Creating subnets
 Then I created four different subnets.
 - The first is between the two routers, *router-1* and *router-2*; for this I chose the subnet 10.1.0.0/30 because it cover only the two routers (2<sup>32-30</sup> - 2 = 2)
 - The second is between *router-1* and *host-a*; in this case I had to cover 258 addresses so I needed /23 as netmask (2<sup>32-24</sup> - 2 = 254 is not enough, instead 2<sup>32-23</sup> -2 = 510 is right). I used the subnet 192.168.0.0/23    
 - The third is between *router-1* and *host-b*, for which I chose to use the subnet 192.168.8.0/23    
 - The fourth is between *router-2* and *host-c*; in this case I used the subnet 192.168.3.0/24 because it has to cover 143 addresses (2<sup>32-24</sup> - 2 > 143) 
+## IP-Map
+*here goes the network configuration image*
+
+| Device | Interface | IP | Subnet |
+| :----: | :----: | :----: | :----: |
+| Router-1 | enp0s9 | 10.1.0.1 | 1 |
+| Router-2 | enp0s9 | 10.1.0.2 | 1 |
+| Router-1 | enp0s8.20 | 192.168.0.1 | 2 |
+| Host-a | enp0s8 | 192.168.0.2 | 2 |
+| Router-1 | enp0s8.30 | 192.168.8.1 | 3 |
+| Host-b | enp0s8 | 192.168.8.2 | 3 |
+| Router-2 | enp0s8 | 192.168.3.1 | 4 |
+| Host-c | enp0s8 | 192.168.3.2 | 4 |
+
+It was important and necessary to build two VLANs in order to keep Host-a and Host-b in separate subnets, so I created the VLANs for subnets 2 and 3, respectively with tags 20 and 30. 
+
+## Implementation
+### Commands
+Here there is a list of the commands I used:
+- [**IP FORWARDING**] I enabled the IPv4 forwarding in the routers with `sysctl -w net.ipv4.ip_forward=1`;
+- [**IP**] I assigned an IP address to each interface, with the command `ip addr add [ip_address] dev [interface]` and then I activated that interface with `ip link set dev [interface] up`;
+- [**VLANs**] In order to create the VLANs mentioned earlier, I used `ip link add link enp0s8 name enp0s8.20 type vlan id 20` and `ip link add link enp0s8 name enp0s8.30 type vlan id 30` and then I added the IP addresses to the virtual interfaces with `addr add 192.168.0.1/23 dev enp0s8.20` and `ip addr add 192.168.8.1/23 dev enp0s8.30`;
+
+### Configuring switch
+Regarding the switch, first I created a bridge named *switch* with the command `ovs-vsctl add-br switch`. Then I configured the ports, assigning the tags, with the following commands: 
+```
+sudo ovs-vsctl add-port switch enp0s8
+sudo ovs-vsctl add-port switch enp0s9 tag="20"
+sudo ovs-vsctl add-port switch enp0s10 tag="30"
+```
+
+### Configuring Host-c
+
+
+## Configuring Vagrant
