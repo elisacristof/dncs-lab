@@ -119,9 +119,9 @@ The assignment deliverable consists of a Github repository containing:
 # DESIGN
 ## First step
 I run the initiator script which assigned me three different values that represents the number of hosts that my subnets have to support:
-- 258 for Host-A
-- 262 for Host-B
-- 143 for Host-C
+- 258 for subnet *Hosts-A*;
+- 262 for subnet *Hosts-B*;
+- 143 for subnet *Hub*.
 ## Creating subnets
 Then I created four different subnets.
 - The first is between the two routers, *router-1* and *router-2*; for this I chose the subnet 10.1.0.0/30 because it cover only the two routers (2<sup>32-30</sup> - 2 = 2)
@@ -133,16 +133,21 @@ Then I created four different subnets.
 
 | Device | Interface | IP | Subnet |
 | :----: | :----: | :----: | :----: |
-| Router-1 |   | 10.1.0.1 | 1 |
-| Router-2 |   | 10.1.0.2 | 1 |
-| Router-1 |   | 192.168.0.1 | 2 |
-| Host-a |   | 192.168.0.2 | 2 |
-| Router-1 |   | 192.168.8.1 | 3 |
-| Host-b |   | 192.168.8.2 | 3 |
-| Router-2 |   | 192.168.3.1 | 4 |
-| Host-c |   | 192.168.3.2 | 4 |
+| Router-1 | enp0s9 | 10.1.0.1 | 1 |
+| Router-2 | enp0s9 | 10.1.0.2 | 1 |
+| Router-1 | enp0s8.20 | 192.168.0.1 | 2 |
+| Host-a | enp0s8 | 192.168.0.2 | 2 |
+| Router-1 | enp0s8.30 | 192.168.8.1 | 3 |
+| Host-b | enp0s8 | 192.168.8.2 | 3 |
+| Router-2 | enp0s8 | 192.168.3.1 | 4 |
+| Host-c | enp0s8 | 192.168.3.2 | 4 |
+
+## Implementation
+### Commands
+
+### Configuring switch
+
+### Configuring Host-c
+
 
 ## Configuring Vagrant
-
-
-## Commands and Implementation
