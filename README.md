@@ -146,11 +146,11 @@ It was important and necessary to build two VLANs in order to keep Host-a and Ho
 
 ## Implementation
 ### Commands
-Here there is a list of the commands I used:
+Here there is a list of the commands I used (all preceded by `sudo` because every command has to be executed by the superuser):
 - [**IP FORWARDING**] I enabled the IPv4 forwarding in the routers with `sysctl -w net.ipv4.ip_forward=1`;
 - [**IP**] I assigned an IP address to each interface, with the command `ip addr add [ip_address/netmask] dev [interface]` and then I activated that interface with `ip link set dev [interface] up`;
-- [**VLANs**] In order to create the VLANs mentioned earlier, I used `ip link add link enp0s8 name enp0s8.20 type vlan id 20` and `ip link add link enp0s8 name enp0s8.30 type vlan id 30` and then I added the IP addresses to the virtual interfaces with `addr add 192.168.0.1/23 dev enp0s8.20` and `ip addr add 192.168.8.1/23 dev enp0s8.30`;
-- [**ROUTES**] As required, I made the route as generic as possible and for this reason I created only one route from which is possible to reach the three subnets containing the hosts with the command `ip route add [ip_address] via [interface]`.
+- [**VLANs**] In order to create the VLANs mentioned earlier, I used `ip link add link enp0s8 name enp0s8.20 type vlan id 20` and `ip link add link enp0s8 name enp0s8.30 type vlan id 30` and then I added the IP addresses to the virtual interfaces with `ip addr add 192.168.0.1/23 dev enp0s8.20` and `ip addr add 192.168.8.1/23 dev enp0s8.30`;
+- [**ROUTES**] The command `ip route add [ip_address/netmask] via [address]` helped me to create a route that takes all the traffic to the addresses included in the network[ip_address/netmask] and direct it to the [address].
 
 ### Configuring switch
 Regarding the switch, first I created a bridge named *switch* with the command `ovs-vsctl add-br switch`. Then I configured the ports, assigning the tags, with the following commands: 
@@ -161,6 +161,15 @@ sudo ovs-vsctl add-port switch enp0s10 tag="30"
 ```
 
 ### Configuring Host-c
+Finally, since one of the requirements was for Host-c to run a docker image, I configured in this way:
+```
+sudo apt-get update
+sudo pat-get -y install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
 
+sudo docker pull dustnic82/nginx-test
+sudo docker run --name nginx -p 80:80 -d dustnic82/nginx-test
+```
 
 ## Configuring Vagrant
