@@ -117,18 +117,18 @@ The assignment deliverable consists of a Github repository containing:
 
 
 # DESIGN
-## First step
+### First step
 I run the initiator script which assigned me three different values that represents the number of hosts that my subnets have to support:
 - 258 for subnet *Hosts-A*;
 - 262 for subnet *Hosts-B*;
 - 143 for subnet *Hub*.
-## Creating subnets
+## CREATING SUBNETS
 Then I created four different subnets.
 - The first is between the two routers, *router-1* and *router-2*; for this I chose the subnet 10.1.0.0/30 because it cover only the two routers (2<sup>32-30</sup> - 2 = 2)
 - The second is between *router-1* and *host-a*; in this case I had to cover 258 addresses so I needed /23 as netmask (2<sup>32-24</sup> - 2 = 254 is not enough, instead 2<sup>32-23</sup> -2 = 510 is right). I used the subnet 192.168.0.0/23    
 - The third is between *router-1* and *host-b*, for which I chose to use the subnet 192.168.8.0/23    
 - The fourth is between *router-2* and *host-c*; in this case I used the subnet 192.168.3.0/24 because it has to cover 143 addresses (2<sup>32-24</sup> - 2 > 143) 
-## IP-Map
+## IP-MAP
 ![DNCS Design](https://user-images.githubusercontent.com/89995099/132944388-a64cb8ee-d237-4c87-95af-f58df2cebb89.png)
 
 | Device | Interface | IP | Subnet |
@@ -144,7 +144,7 @@ Then I created four different subnets.
 
 It was important and necessary to build two VLANs in order to keep Host-a and Host-b in separate subnets, so I created the VLANs for subnets 2 and 3, respectively with tags 20 and 30. 
 
-## Implementation
+## IMPLEMENTATIONS
 ### Commands
 Here there is a list of the commands I used (all preceded by `sudo` because every command has to be executed by the superuser):
 - [**IP FORWARDING**] I enabled the IPv4 forwarding in the routers with `sysctl -w net.ipv4.ip_forward=1`;
@@ -172,8 +172,8 @@ sudo docker pull dustnic82/nginx-test
 sudo docker run --name nginx -p 80:80 -d dustnic82/nginx-test
 ```
 
-## Configuring Vagrant
+## CONFIGURING VAGRANT
 I included all the commands needed for the configuration of the network in bash scripts, one for each device implemented. These scripts are included in the `Vagrantfile`and will configure the network during the creation of the Virtual Machines, after launching the `vagrant up` command. 
 I also needed to increase the memory size of Host-c (by modifying the option `vb.memory`) in order to run the Docker image.
 
-## Test
+## TEST
