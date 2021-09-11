@@ -129,7 +129,7 @@ Then I created four different subnets.
 - The third is between *router-1* and *host-b*, for which I chose to use the subnet 192.168.8.0/23    
 - The fourth is between *router-2* and *host-c*; in this case I used the subnet 192.168.3.0/24 because it has to cover 143 addresses (2<sup>32-24</sup> - 2 > 143) 
 ## IP-Map
-*here goes the network configuration image*
+![DNCS Design](https://user-images.githubusercontent.com/89995099/132944388-a64cb8ee-d237-4c87-95af-f58df2cebb89.png)
 
 | Device | Interface | IP | Subnet |
 | :----: | :----: | :----: | :----: |
