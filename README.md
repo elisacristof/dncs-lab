@@ -148,8 +148,9 @@ It was important and necessary to build two VLANs in order to keep Host-a and Ho
 ### Commands
 Here there is a list of the commands I used:
 - [**IP FORWARDING**] I enabled the IPv4 forwarding in the routers with `sysctl -w net.ipv4.ip_forward=1`;
-- [**IP**] I assigned an IP address to each interface, with the command `ip addr add [ip_address] dev [interface]` and then I activated that interface with `ip link set dev [interface] up`;
+- [**IP**] I assigned an IP address to each interface, with the command `ip addr add [ip_address/netmask] dev [interface]` and then I activated that interface with `ip link set dev [interface] up`;
 - [**VLANs**] In order to create the VLANs mentioned earlier, I used `ip link add link enp0s8 name enp0s8.20 type vlan id 20` and `ip link add link enp0s8 name enp0s8.30 type vlan id 30` and then I added the IP addresses to the virtual interfaces with `addr add 192.168.0.1/23 dev enp0s8.20` and `ip addr add 192.168.8.1/23 dev enp0s8.30`;
+- [**ROUTES**] As required, I made the route as generic as possible and for this reason I created only one route from which is possible to reach the three subnets containing the hosts with the command `ip route add [ip_address] via [interface]`.
 
 ### Configuring switch
 Regarding the switch, first I created a bridge named *switch* with the command `ovs-vsctl add-br switch`. Then I configured the ports, assigning the tags, with the following commands: 
