@@ -124,8 +124,8 @@ I run the initiator script which assigned me three different values that represe
 - 143 for subnet *Hub*.
 ## CREATING SUBNETS
 Then I created four different subnets.
-- The first is between the two routers, *router-1* and *router-2*; for this I chose the subnet 10.1.0.0/30 because it cover only the two routers (2<sup>32-30</sup> - 2 = 2)
-- The second is between *router-1* and *host-a*; in this case I had to cover 258 addresses so I needed /23 as netmask (2<sup>32-24</sup> - 2 = 254 is not enough, instead 2<sup>32-23</sup> -2 = 510 is right). I used the subnet 192.168.0.0/23    
+- The first is between the two routers, *router-1* and *router-2*; for this I chose the subnet 10.1.0.0/30 because it covers only the two routers (2<sup>32-30</sup> - 2 = 2)
+- The second is between *router-1* and *host-a*; in this case I had to cover 258 addresses so I needed /23 as netmask (2<sup>32-24</sup> - 2 = 254 is not enough, instead 2<sup>32-23</sup> - 2 = 510 is right). I used the subnet 192.168.0.0/23    
 - The third is between *router-1* and *host-b*, for which I chose to use the subnet 192.168.8.0/23    
 - The fourth is between *router-2* and *host-c*; in this case I used the subnet 192.168.3.0/24 because it has to cover 143 addresses (2<sup>32-24</sup> - 2 > 143) 
 ## IP-MAP
@@ -173,7 +173,9 @@ sudo docker run --name nginx -p 80:80 -d dustnic82/nginx-test
 ```
 
 ## CONFIGURING VAGRANT
-I included all the commands needed for the configuration of the network in bash scripts, one for each device implemented. These scripts are included in the `Vagrantfile`and will configure the network during the creation of the Virtual Machines, after launching the `vagrant up` command. 
+I included all the commands needed for the configuration of the network in bash scripts, one for each device implemented. These scripts are included in the `Vagrantfile` and will configure the network during the creation of the Virtual Machines, after launching the to connect with vagrant ssh to all the machines and with ping i tried all the possible connectionvagrant up` command. 
 I also needed to increase the memory size of Host-c (by modifying the option `vb.memory`) in order to run the Docker image.
 
 ## TEST
+I launched the `vagrant up` command and finally I tried to connect with `vagrant ssh` to all the machines. Then with the `ping` command I checked all the possible connections.
+From *router-1* to all the others: 
