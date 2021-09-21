@@ -173,7 +173,7 @@ sudo docker run --name nginx -p 80:80 -d dustnic82/nginx-test
 ```
 
 ## CONFIGURING VAGRANT
-I included all the commands needed for the configuration of the network in bash scripts, one for each device implemented. These scripts are included in the `Vagrantfile` and will configure the network during the creation of the Virtual Machines, after launching the to connect with vagrant ssh to all the machines and with ping i tried all the possible connectionvagrant up` command. 
+I included all the commands needed for the configuration of the network in bash scripts, one for each device implemented. These scripts are included in the `Vagrantfile` and will configure the network during the creation of the Virtual Machines, after launching the `vagrant up` command. 
 I also needed to increase the memory size of Host-c (by modifying the option `vb.memory`) in order to run the Docker image.
 
 ## TEST
