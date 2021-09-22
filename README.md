@@ -127,7 +127,8 @@ Then I created four different subnets.
 - The first is between the two routers, *router-1* and *router-2*; for this I chose the subnet 10.1.0.0/30 because it covers only the two routers (2<sup>32-30</sup> - 2 = 2)
 - The second is between *router-1* and *host-a*; in this case I had to cover 258 addresses so I needed /23 as netmask (2<sup>32-24</sup> - 2 = 254 is not enough, instead 2<sup>32-23</sup> - 2 = 510 is right). I used the subnet 192.168.0.0/23    
 - The third is between *router-1* and *host-b*, for which I chose to use the subnet 192.168.8.0/23    
-- The fourth is between *router-2* and *host-c*; in this case I used the subnet 192.168.3.0/24 because it has to cover 143 addresses (2<sup>32-24</sup> - 2 > 143) 
+- The fourth is between *router-2* and *host-c*; in this case I used the subnet 192.168.3.0/24 because it has to cover 143 addresses 
+(2<sup>32-24</sup> - 2 > 143) 
 ## IP-MAP
 ![DNCS Design](https://user-images.githubusercontent.com/89995099/132944388-a64cb8ee-d237-4c87-95af-f58df2cebb89.png)
 
@@ -178,18 +179,23 @@ I also needed to increase the memory size of Host-c (by modifying the option `vb
 
 ## TEST
 I launched the `vagrant up` command and finally I tried to connect with `vagrant ssh` to all the machines. Then with the `ping` command I checked all the possible connections.
+
 From *router-1* to all the others: 
 
 ![router-1](https://user-images.githubusercontent.com/89995099/134328756-9bf049e8-2ddd-4d66-937a-3b772b6609fc.png)
+
 From *router-2* to all the others:
 
 ![router-2](https://user-images.githubusercontent.com/89995099/134328956-30e6c753-4650-46f4-b857-d42d5da088d9.png)
+
 From *host-a* to all the others:
 
 ![host-a](https://user-images.githubusercontent.com/89995099/134345048-14718681-08d9-44eb-8f42-738454da21f6.png)
+
 From *host-b* to all the others:
 
 ![host-b](https://user-images.githubusercontent.com/89995099/134346619-0d2547a1-8169-436a-9113-91c2cdfd0208.png)
+
 From *host-c* to all the others:
 
 ![host-c](https://user-images.githubusercontent.com/89995099/134347842-4e66149a-3b97-47ef-a7f3-61a95a8fa272.png)
