@@ -178,20 +178,20 @@ I also needed to increase the memory size of Host-c (by modifying the option `vb
 
 ## TEST
 I launched the `vagrant up` command and finally I tried to connect with `vagrant ssh` to all the machines. Then with the `ping` command I checked all the possible connections.
-
 From *router-1* to all the others: 
+
 ![router-1](https://user-images.githubusercontent.com/89995099/134328756-9bf049e8-2ddd-4d66-937a-3b772b6609fc.png)
-
 From *router-2* to all the others:
+
 ![router-2](https://user-images.githubusercontent.com/89995099/134328956-30e6c753-4650-46f4-b857-d42d5da088d9.png)
-
 From *host-a* to all the others:
+
 ![host-a](https://user-images.githubusercontent.com/89995099/134345048-14718681-08d9-44eb-8f42-738454da21f6.png)
-
 From *host-b* to all the others:
-![host-b](https://user-images.githubusercontent.com/89995099/134346619-0d2547a1-8169-436a-9113-91c2cdfd0208.png)
 
+![host-b](https://user-images.githubusercontent.com/89995099/134346619-0d2547a1-8169-436a-9113-91c2cdfd0208.png)
 From *host-c* to all the others:
+
 ![host-c](https://user-images.githubusercontent.com/89995099/134347842-4e66149a-3b97-47ef-a7f3-61a95a8fa272.png)
 
 
